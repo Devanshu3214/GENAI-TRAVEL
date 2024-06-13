@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+.mySlides {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; 
+}
+
+
+.btn-secondary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 24px; /* Adjust padding as needed */
+    font-size: 7.0rem; /* Adjust font size */
+    background-color: transparent; /* Transparent background */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    cursor: pointer;
+    font-family: "Sofia", sans-serif; /* Cinzel Decorative font */
+    text-transform: lowercase;
+}
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background on hover */
+}

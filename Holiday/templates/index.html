@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Holiday Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+
+</head>
+<body>
+    <div class="background-image"></div>
+
+    <div class="content">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="https://images.wallpaperscraft.com/image/single/girl_travel_camping_166108_1600x900.jpg" alt="Slide 1">
+            </div>
+            
+            <div class="mySlides fade">
+                <img src="https://images.wallpaperscraft.com/image/single/compass_hand_travel_120627_1600x900.jpg" alt="Slide 2">
+            </div>
+            
+            <div class="mySlides fade">
+                <img src="https://images.wallpaperscraft.com/image/single/keep_calm_travel_inscription_167590_1600x900.jpg" alt="Slide 3">
+            </div>
+            
+            <button class="btn btn-secondary custom-button" onclick="openPlacesPage()">take me away</button>
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var slides = document.getElementsByClassName("mySlides");
+            var currentSlide = slideIndex % slides.length;
+            var nextSlide = (slideIndex + 1) % slides.length;
+
+            // Fade out current slide
+            if (slides[currentSlide]) {
+                fadeOut(slides[currentSlide]);
+            }
+
+            // Fade in next slide
+            fadeIn(slides[nextSlide]);
+
+            // Update slide index
+            slideIndex++;
+
+            setTimeout(showSlides, 6000); // Change image every 6 seconds
+        }
+
+        function fadeIn(element) {
+            element.style.display = 'block';
+            element.style.opacity = 0;
+
+            var op = 0.1;  // initial opacity
+            var timer = setInterval(function () {
+                if (op >= 1){
+                    clearInterval(timer);
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + (op * 100) + ")"; // For older IE versions
+                op += 0.1; // Increase opacity gradually
+            }, 50);
+        }
+
+        function fadeOut(element) {
+            var op = 1;  // initial opacity
+
+            var timer = setInterval(function () {
+                if (op <= 0){
+                    clearInterval(timer);
+                    element.style.display = 'none'; // Hide the element after fading out
+                } else {
+                    element.style.opacity = op;
+                    element.style.filter = 'alpha(opacity=' + (op * 100) + ")"; // For older IE versions
+                    op -= 0.1; // Decrease opacity gradually
+                }
+            }, 50);
+        }
+
+        function openPlacesPage() {
+        window.location.href = "/places"; 
+    }
+    </script>
+</body>
+</html>
